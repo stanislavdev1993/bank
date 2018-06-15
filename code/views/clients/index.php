@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'create_deposit' => function () {
                             return Html::a(Html::tag('span', '',
                                 ['class' => 'glyphicon glyphicon-piggy-bank']
-                            ), '#');
+                            ), ['/deposits/create']);
                         }
                 ],
                 'template' => '{view} {update} {create_deposit} {delete} '

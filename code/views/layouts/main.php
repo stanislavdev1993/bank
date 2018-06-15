@@ -38,8 +38,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Clients', 'url' => ['/site/index']],
-            ['label' => 'Deposits', 'url' => ['/site/about']],
+            ['label' => 'Clients', 'url' => ['/clients/index']],
+            ['label' => 'Deposits', 'url' => ['/deposits/index']],
             ['label' => 'Deposit history', 'url' => ['/site/about']],
             ['label' => 'Report', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
