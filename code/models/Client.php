@@ -53,4 +53,9 @@ class Client extends \yii\db\ActiveRecord
             'birthday' => 'Birthday',
         ];
     }
+
+    public function getDeposits()
+    {
+        return $this->hasMany(Deposit::class, ['client_id' => 'id']);
+    }
 }

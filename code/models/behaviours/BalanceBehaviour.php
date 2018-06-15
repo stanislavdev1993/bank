@@ -24,11 +24,14 @@ class BalanceBehaviour extends Behavior
     {
         $model = $event->sender;
 
-        $balance = (string)$model->{$this->balanceAttribute};
-        list($intPart, $floatPart) = explode('.', $balance);
+        $balance = $model->{$this->balanceAttribute};
 
-        $model->{$this->balanceAttribute} = $intPart . $floatPart;
-        $model->{$this->sliceAttribute} = iconv_strlen($floatPart);
+        if (is_float($balance)) {
+            list($intPart, $floatPart) = explode('.', (string)$balance);
+
+            $model->{$this->balanceAttribute} = $intPart . $floatPart;
+            $model->{$this->sliceAttribute} = iconv_strlen($floatPart);
+        }
     }
 
     public function afterFind(Event $event)
@@ -38,6 +41,8 @@ class BalanceBehaviour extends Behavior
         $balance = $model->{$this->balanceAttribute};
         $slice = $model->{$this->sliceAttribute};
 
-        $model->{$this->balanceAttribute} = $balance / (int)('1' . str_repeat('0', $slice));
+        if ($slice > 0) {
+            $model->{$this->balanceAttribute} = $balance / (int)('1' . str_repeat('0', $slice));
+        }
     }
 }

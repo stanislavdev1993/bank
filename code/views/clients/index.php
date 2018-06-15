@@ -36,10 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'buttons' => [
-                        'create_deposit' => function () {
+                        'create_deposit' => function ($url, $model) {
                             return Html::a(Html::tag('span', '',
                                 ['class' => 'glyphicon glyphicon-piggy-bank']
-                            ), ['/deposits/create']);
+                            ), ['/deposits/create', 'id' => $model->id]);
                         }
                 ],
                 'template' => '{view} {update} {create_deposit} {delete} '

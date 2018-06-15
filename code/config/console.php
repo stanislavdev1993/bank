@@ -16,6 +16,12 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'depositCommission' => [
+            'class' => 'app\components\schedulers\DepositCommission'
+        ],
+        'depositPercent' => [
+            'class' => 'app\components\schedulers\DepositPercent',
+        ],
         'log' => [
             'targets' => [
                 [
