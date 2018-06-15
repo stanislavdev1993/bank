@@ -19,6 +19,7 @@ class m180615_175804_deposit_history extends Migration
 
         $this->createTable('{{%deposit_history}}', [
             'id' => $this->primaryKey()->unsigned(),
+            'client_id' => $this->integer()->unsigned(),
             'deposit_id' => $this->integer()->unsigned(),
             'type' => $this->tinyInteger(1)->unsigned(),
             'value' => $this->integer()->unsigned(),
