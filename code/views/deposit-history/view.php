@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'deposit_id',
             'type',
             'value',
-            'slice',
             'created_at',
         ],
     ]) ?>

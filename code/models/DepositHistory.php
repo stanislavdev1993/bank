@@ -25,7 +25,9 @@ class DepositHistory extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            [TimestampBehavior::class],
+            [
+                'class' => TimestampBehavior::class
+            ],
             [
                 'class' => BalanceBehaviour::class,
                 'balanceAttribute' => 'value'
