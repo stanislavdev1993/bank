@@ -26,7 +26,8 @@ class DepositHistory extends \yii\db\ActiveRecord
     {
         return [
             [
-                'class' => TimestampBehavior::class
+                'class' => TimestampBehavior::class,
+                'updatedAtAttribute' => false
             ],
             [
                 'class' => BalanceBehaviour::class,
@@ -50,7 +51,7 @@ class DepositHistory extends \yii\db\ActiveRecord
     {
         return [
             [['client_id', 'deposit_id', 'type', 'value'], 'required'],
-            [['client_id', 'deposit_id', 'value', 'safe'], 'integer'],
+            [['client_id', 'deposit_id', 'value'], 'integer'],
             ['type', 'in', 'range' => [self::TYPE_PERCENT, self::TYPE_COMMISSION]]
         ];
     }
