@@ -2,16 +2,10 @@
 
 namespace app\components\schedulers\strategy\commissions;
 
-use app\components\schedulers\strategy\StrategyInterface;
-use app\models\Deposit;
-
-class LowBalanceStrategy implements StrategyInterface
+class LowBalanceStrategy extends BalanceStrategy
 {
-    public function canCalculate(Deposit $model): bool
-    {
-    }
-
-    public function commit(Deposit $model)
-    {
-    }
+    const COMMISSION_FROM = 0;
+    const COMMISSION_TO = 1000;
+    const COMMISSION_PERCENT = 5;
+    const COMMISSION_MIN_VALUE = 50;
 }
