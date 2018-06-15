@@ -6,6 +6,8 @@ services:
       - "80:80"
     volumes:
       - "/data/bank/code:/var/www/html"
+    links:
+      - "mysql:database"
   mysql:
     image: mysql:5.7
     ports:
