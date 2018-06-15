@@ -21,7 +21,7 @@ class m180615_174808_deposits extends Migration
             'id' => $this->primaryKey()->unsigned(),
             'client_id' => $this->integer()->unsigned(),
             'percent' => $this->tinyInteger(3)->unsigned(),
-            'balance' => $this->integer()->unsigned(),
+            'balance' => $this->bigInteger()->unsigned(),
             'slice' => $this->integer()->unsigned(),
             'created_at' => $this->integer()->unsigned(),
             'updated_at' => $this->integer()->unsigned()

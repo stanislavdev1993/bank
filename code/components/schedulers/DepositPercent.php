@@ -4,7 +4,6 @@ namespace app\components\schedulers;
 
 use app\components\schedulers\strategy\percents\PercentStrategy;
 use app\components\schedulers\strategy\StrategyInterface;
-use app\models\Deposit;
 use yii\base\Component;
 
 /**

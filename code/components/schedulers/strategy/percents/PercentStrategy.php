@@ -29,7 +29,7 @@ class PercentStrategy implements StrategyInterface
         $currentMonth = date('m', time());
         $currentYear = date('Y', time());
 
-        if ($calcDay == $currentDay
+        if ($calcDay <= $currentDay
             && $calcMonth == $currentMonth
             && $calcYear == $currentYear
         ) {
