@@ -4,18 +4,10 @@ namespace app\components\schedulers\strategy\percents;
 
 use app\components\schedulers\strategy\StrategyInterface;
 use app\models\Deposit;
+use app\models\DepositHistory;
 
 class PercentStrategy implements StrategyInterface
 {
-    protected $historyModel;
-
-    public function __construct($historyModel = null)
-    {
-        if ($historyModel == null) {
-            $this->historyModel = '';
-        }
-    }
-
     public function canCalculate(Deposit $model): bool
     {
 
@@ -43,10 +35,24 @@ class PercentStrategy implements StrategyInterface
     {
         $model->balance += $this->getBalance($model->balance, $model->percent);
 
-        $model->save();
+        if ($model->save()) {
+            $this->saveHistory($model);
+        }
     }
 
-    public function getBalance($currentBalance, int $percent)
+    protected function saveHistory(Deposit $model)
+    {
+        $historyModel = new DepositHistory([
+            'client_id' => $model->client_id,
+            'deposit_id' => $model->id,
+            'type' => DepositHistory::TYPE_PERCENT,
+            'value' => $model->balance,
+        ]);
+
+        $historyModel->save();
+    }
+
+    protected function getBalance($currentBalance, int $percent)
     {
         return $currentBalance * $percent / 100;
     }
